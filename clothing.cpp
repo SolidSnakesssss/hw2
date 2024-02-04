@@ -25,7 +25,7 @@ std::set<std::string> Clothing::keywords() const
 {
     //Declare new sets
     set<string> newSet, tempSet;
-    
+
     //Converts book info into lowercase
     string lowerName = convToLower(name_);
     string lowerCategory = convToLower(category_);
@@ -52,13 +52,14 @@ std::string Clothing::displayString() const
 {
     string clothingInfo = "", stringPrice, stringQuantity;
 
-    ostringstream numbConv;
+    ostringstream numbConvPrice;
+    ostringstream numbConvQuant;
 
-    numbConv << price_;
-    stringPrice = numbConv.str();
+    numbConvPrice << price_;
+    stringPrice = numbConvPrice.str();
 
-    numbConv << qty_;
-    stringQuantity = numbConv.str();
+    numbConvQuant << qty_;
+    stringQuantity = numbConvQuant.str();
 
     clothingInfo += "Category: " + category_ + "\n";
     clothingInfo += "Name: " + name_ + "\n";
@@ -72,6 +73,6 @@ std::string Clothing::displayString() const
 
 void Clothing::dump(std::ostream& os) const
 {
-    os << category_ << "\n" << name_ << "\n" << price_ 
-    << "\n" << qty_ << size_ << "\n" << brand_ << "\n" << endl;
+    os << category_ << "\n" << name_ << "\n" << price_
+        << "\n" << qty_ << "\n" << size_ << "\n" << brand_ << "\n" << endl;
 }

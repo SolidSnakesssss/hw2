@@ -25,7 +25,7 @@ std::set<std::string> Book::keywords() const
 {
     //Declare new sets
     set<string> newSet, tempSet;
-    
+
     //Converts book info into lowercase
     string lowerName = convToLower(name_);
     string lowerCategory = convToLower(category_);
@@ -44,7 +44,6 @@ std::set<std::string> Book::keywords() const
     tempSet = parseStringToWords(lowerAuthor);
     newSet = setUnion(newSet, tempSet);
 
-    //returns the set of keywords, newSet
     return newSet;
 }
 
@@ -52,26 +51,27 @@ std::string Book::displayString() const
 {
     string bookInfo = "", stringPrice, stringQuantity;
 
-    ostringstream numbConv;
+    ostringstream numbConvPrice;
+    ostringstream numbConvQuant;
 
-    numbConv << price_;
-    stringPrice = numbConv.str();
+    numbConvPrice << price_;
+    stringPrice = numbConvPrice.str();
 
-    numbConv << qty_;
-    stringQuantity = numbConv.str();
+    numbConvQuant << qty_;
+    stringQuantity = numbConvQuant.str();
 
     bookInfo += "Category: " + category_ + "\n";
     bookInfo += "Name: " + name_ + "\n";
     bookInfo += "Price: $" + stringPrice + "\n";
     bookInfo += "Quantity: " + stringQuantity + "\n";
     bookInfo += "ISBN: " + ISBN_ + "\n";
-    bookInfo += "Author: " + author_ + "\n";
+    bookInfo += "Author " + author_ + "\n";
 
+    //cout << bookInfo << endl;
     return bookInfo;
 }
 
 void Book::dump(std::ostream& os) const
 {
-    os << category_ << "\n" << name_ << "\n" << price_ 
-    << "\n" << qty_ << ISBN_ << "\n" << author_ << "\n" << endl;
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << ISBN_ << "\n" << author_ << "\n" << endl;
 }

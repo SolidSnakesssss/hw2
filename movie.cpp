@@ -25,7 +25,7 @@ std::set<std::string> Movie::keywords() const
 {
     //Declare new sets
     set<string> newSet, tempSet;
-    
+
     //Converts book info into lowercase
     string lowerName = convToLower(name_);
     string lowerCategory = convToLower(category_);
@@ -33,7 +33,7 @@ std::set<std::string> Movie::keywords() const
     string lowerRating = convToLower(rating_);
 
     //parse genre into a keyword
-    tempSet.insert(genre_);
+    tempSet.insert(lowerGenre);
     newSet = setUnion(newSet, tempSet);
 
     tempSet = parseStringToWords(lowerCategory);
@@ -53,13 +53,14 @@ std::string Movie::displayString() const
 {
     string movieInfo = "", stringPrice, stringQuantity;
 
-    ostringstream numbConv;
+    ostringstream numbConvPrice;
+    ostringstream numbConvQuant;
 
-    numbConv << price_;
-    stringPrice = numbConv.str();
+    numbConvPrice << price_;
+    stringPrice = numbConvPrice.str();
 
-    numbConv << qty_;
-    stringQuantity = numbConv.str();
+    numbConvQuant << qty_;
+    stringQuantity = numbConvQuant.str();
 
     movieInfo += "Category: " + category_ + "\n";
     movieInfo += "Name: " + name_ + "\n";
@@ -73,6 +74,6 @@ std::string Movie::displayString() const
 
 void Movie::dump(std::ostream& os) const
 {
-    os << category_ << "\n" << name_ << "\n" << price_ 
-    << "\n" << qty_ << genre_ << "\n" << rating_ << "\n" << endl;
+    os << category_ << "\n" << name_ << "\n" << price_
+        << "\n" << qty_ << "\n" << genre_ << "\n" << rating_ << "\n" << endl;
 }
