@@ -61,12 +61,9 @@ std::string Clothing::displayString() const
     numbConvQuant << qty_;
     stringQuantity = numbConvQuant.str();
 
-    clothingInfo += "Category: " + category_ + "\n";
-    clothingInfo += "Name: " + name_ + "\n";
-    clothingInfo += "Price: $" + stringPrice + "\n";
-    clothingInfo += "Quantity: " + stringQuantity + "\n";
-    clothingInfo += "Size: " + size_ + "\n";
-    clothingInfo += "Brand: " + brand_ + "\n";
+    bookInfo += name_ + "\n";
+    bookInfo += "Size: " + size_ + " Brand: " + brand_ + "\n";
+    bookInfo += stringPrice + " " + stringQuantity + " left.";
 
     return clothingInfo;
 }

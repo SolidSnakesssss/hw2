@@ -60,12 +60,9 @@ std::string Book::displayString() const
     numbConvQuant << qty_;
     stringQuantity = numbConvQuant.str();
 
-    bookInfo += "Category: " + category_ + "\n";
-    bookInfo += "Name: " + name_ + "\n";
-    bookInfo += "Price: $" + stringPrice + "\n";
-    bookInfo += "Quantity: " + stringQuantity + "\n";
-    bookInfo += "ISBN: " + ISBN_ + "\n";
-    bookInfo += "Author " + author_ + "\n";
+    bookInfo += name_ + "\n";
+    bookInfo += "Author: " + author_ + " ISBN: " + ISBN_ + "\n";
+    bookInfo += stringPrice + " " + stringQuantity + " left.";
 
     //cout << bookInfo << endl;
     return bookInfo;
