@@ -22,9 +22,15 @@ product_parser.o: product_parser.cpp product_parser.h product.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c product_parser.cpp
 util.o: util.cpp util.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c util.cpp
-#Custome File Book
+#Custom File Book
 book.o: book.cpp book.h
   $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c book.cpp
+#Custom File Clothing
+clothing.o: clothing.cpp clothing.h
+  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
+#Custom File Movie
+movie.o: movie.cpp movie.harder
+  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
 
 
 

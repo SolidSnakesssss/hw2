@@ -50,7 +50,7 @@ std::set<std::string> Clothing::keywords() const
 
 std::string Clothing::displayString() const
 {
-    string bookInfo = "", stringPrice, stringQuantity;
+    string clothingInfo = "", stringPrice, stringQuantity;
 
     ostringstream numbConv;
 
@@ -60,14 +60,14 @@ std::string Clothing::displayString() const
     numbConv << qty_;
     stringQuantity = numbConv.str();
 
-    bookInfo += "Category: " + category_ + "\n";
-    bookInfo += "Name: " + name_ + "\n";
-    bookInfo += "Price: $" + stringPrice + "\n";
-    bookInfo += "Quantity: " + stringQuantity + "\n";
-    bookInfo += "Size: " + size_ + "\n";
-    bookInfo += "Brand: " + brand_ + "\n";
+    clothingInfo += "Category: " + category_ + "\n";
+    clothingInfo += "Name: " + name_ + "\n";
+    clothingInfo += "Price: $" + stringPrice + "\n";
+    clothingInfo += "Quantity: " + stringQuantity + "\n";
+    clothingInfo += "Size: " + size_ + "\n";
+    clothingInfo += "Brand: " + brand_ + "\n";
 
-    return bookInfo;
+    return clothingInfo;
 }
 
 void Clothing::dump(std::ostream& os) const
