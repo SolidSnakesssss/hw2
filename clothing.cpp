@@ -1,27 +1,27 @@
-#include "book.h"
+#include "clothing.h"
 
 using namespace std;
 
-Book::Book(const std::string category, const std::string name, double price, int qty, std::string ISBN, std::string author)
-    : Product(category, name, price, qty), ISBN_(ISBN), author_(author)
+Clothing::Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand)
+    : Product(category, name, price, qty), size_(size), brand_(brand)
 {
 }
 
-Book::~Book()
+Clothing::~Clothing()
 {
 }
 
-std::string Book::getISBN() const
+std::string Clothing::getSize() const
 {
-    return ISBN_;
+    return size_;
 }
 
-std::string Book::getAuthor() const
+std::string Clothing::getBrand() const
 {
-    return author_;
+    return brand_;
 }
 
-std::set<std::string> Book::keywords() const
+std::set<std::string> Clothing::keywords() const
 {
     //Declare new sets
     set<string> newSet, tempSet;
@@ -29,11 +29,8 @@ std::set<std::string> Book::keywords() const
     //Converts book info into lowercase
     string lowerName = convToLower(name_);
     string lowerCategory = convToLower(category_);
-    string lowerAuthor = convToLower(author_);
-
-    //parse ISBN into a keyword
-    tempSet = parseStringToWords(ISBN_);
-    newSet = setUnion(newSet, tempSet);
+    string lowerSize = convToLower(size_);
+    string lowerBrand = convToLower(brand_);
 
     tempSet = parseStringToWords(lowerCategory);
     newSet = setUnion(newSet, tempSet);
@@ -41,14 +38,17 @@ std::set<std::string> Book::keywords() const
     tempSet = parseStringToWords(lowerName);
     newSet = setUnion(newSet, tempSet);
 
-    tempSet = parseStringToWords(lowerAuthor);
+    tempSet = parseStringToWords(lowerSize);
+    newSet = setUnion(newSet, tempSet);
+
+    tempSet = parseStringToWords(lowerBrand);
     newSet = setUnion(newSet, tempSet);
 
     //returns the set of keywords, newSet
     return newSet;
 }
 
-std::string Book::displayString() const
+std::string Clothing::displayString() const
 {
     string bookInfo = "", stringPrice, stringQuantity;
 
@@ -64,14 +64,14 @@ std::string Book::displayString() const
     bookInfo += "Name: " + name_ + "\n";
     bookInfo += "Price: $" + stringPrice + "\n";
     bookInfo += "Quantity: " + stringQuantity + "\n";
-    bookInfo += "ISBN: " + ISBN_ + "\n";
-    bookInfo += "Author: " + author_ + "\n";
+    bookInfo += "Size: " + size_ + "\n";
+    bookInfo += "Brand: " + brand_ + "\n";
 
     return bookInfo;
 }
 
-void Book::dump(std::ostream& os) const
+void Clothing::dump(std::ostream& os) const
 {
     os << category_ << "\n" << name_ << "\n" << price_ 
-    << "\n" << qty_ << ISBN_ << "\n" << author_ << "\n" << endl;
+    << "\n" << qty_ << size_ << "\n" << brand_ << "\n" << endl;
 }
