@@ -25,13 +25,13 @@ util.o: util.cpp util.h
 
 #Custom File Book
 book.o: book.cpp book.h
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c book.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c book.cpp
 #Custom File Clothing
 clothing.o: clothing.cpp clothing.h
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
 #Custom File Movie
 movie.o: movie.cpp movie.harder
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
 
 #mydatastore
 mydatastore.o: mydatastore.cpp mydatastore.harder
