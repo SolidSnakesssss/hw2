@@ -202,11 +202,15 @@ void MyDataStore::buyUserCart(std::string username)
 
 void MyDataStore::dump(std::ostream& ofile)
 {
+    ofile << "<products>\n";
+
     for(set<Product*>::iterator it = products_.begin(); it != products_.end(); ++it)
     {
         Product* temp = *it;
         temp->dump(ofile);
     }
+
+    ofile << "<users>\n";
 
     for(set<User*>::iterator it = users_.begin(); it != users_.end(); ++it)
     {
