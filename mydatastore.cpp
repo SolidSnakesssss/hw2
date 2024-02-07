@@ -2,6 +2,23 @@
 
 using namespace std;
 
+MyDataStore::~MyDataStore()
+{   
+    for (set<Product*>::iterator it = products_.begin(); it != products_.end(); ++it)
+    {
+        delete *it;
+    }
+
+    products_.clear();
+
+    for (set<User*>::iterator it = users_.begin(); it !=  users_.end(); ++it)
+    {
+        delete *it;
+    }
+
+    users_.clear();
+}
+
 void MyDataStore::addProduct(Product* p)
 {
     addProductToMap(p);
