@@ -56,6 +56,7 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
+    //bool firstPass = true;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
@@ -70,17 +71,39 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
             std::set<Product*>& productSet = productMap[*it];
             set<Product*> tempProductsSet;
 
-            //cout << productSet.getName() << endl;
-
             //Adds products to the tempProductSet
             for (Product* product : productSet)
             {
+                //cout << product->getName() << endl;
                 tempProductsSet.insert(product);
             }
 
             //Gets wthe intersection of the current totalProducts and tempProductSet returning a new set
             //with only common products
-            totalProducts = setIntersection(totalProducts, tempProductsSet);
+            if (totalProducts.empty())
+            {
+                totalProducts = tempProductsSet;
+                //firstPass = false;
+            }
+            
+            /*
+            else if(tempProductsSet.empty())
+            {
+                totalProducts.clear();
+                //firstPass = true;
+            }
+            */
+
+            else
+            {
+                totalProducts = setIntersection(totalProducts, tempProductsSet);
+            }
+        }
+
+        else
+        {
+            totalProducts.clear();
+            break;
         }
     }
 
@@ -191,6 +214,8 @@ void MyDataStore::buyUserCart(std::string username)
 
     User* tempUser = userMap[usernameLower];
 
+    //cout << tempUser->getName() << " Before: " << tempUser->getBalance() << endl;
+
     for(vector<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end(); ++it)
     {
         Product* tempProduct = *it;
@@ -208,6 +233,8 @@ void MyDataStore::buyUserCart(std::string username)
 
         else continue;
     }
+
+    //cout << tempUser->getName() << " After: " << tempUser->getBalance() << endl;
 }
 
 void MyDataStore::dump(std::ostream& ofile)
