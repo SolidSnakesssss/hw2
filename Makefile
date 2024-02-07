@@ -30,7 +30,7 @@ book.o: book.cpp book.h product.h util.h
 clothing.o: clothing.cpp clothing.h product.h util.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
 #Custom File Movie
-movie.o: movie.cpp movie.harder product.h util.h
+movie.o: movie.cpp movie.h product.h util.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
 
 #mydatastore
