@@ -63,7 +63,7 @@ std::string Movie::displayString() const
     stringQuantity = numbConvQuant.str();
 
     movieInfo += name_ + "\n";
-    movieInfo += "Genre: " + genre_ + " Raintg: " + rating_ + "\n";
+    movieInfo += "Genre: " + genre_ + " Rating: " + rating_ + "\n";
     movieInfo += stringPrice + " " + stringQuantity + " left.";
 
     return movieInfo;

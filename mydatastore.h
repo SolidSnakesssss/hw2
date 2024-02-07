@@ -9,6 +9,7 @@
 #include "product.h"
 #include <map>
 #include <set>
+#include <iostream> //Debugging Purposes
 
 class MyDataStore : public DataStore
 {
@@ -25,7 +26,7 @@ public:
 
     void addProductToMap(Product* p);
 
-    void addToCart(std::string username, Product* index);
+    void addToCart(std::string username, Product* index, int itemID);
 
     void displayCart(std::string username);
 

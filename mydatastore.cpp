@@ -70,6 +70,8 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
             std::set<Product*>& productSet = productMap[*it];
             set<Product*> tempProductsSet;
 
+            //cout << productSet.getName() << endl;
+
             //Adds products to the tempProductSet
             for (Product* product : productSet)
             {
@@ -96,6 +98,8 @@ std::vector<Product*> MyDataStore::unionReturn(std::vector<std::string>& terms)
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
+
+    //cout << "Taco" << endl;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
@@ -131,14 +135,20 @@ std::vector<Product*> MyDataStore::unionReturn(std::vector<std::string>& terms)
     return productReturn;
 }
 
-void MyDataStore::addToCart(std::string username, Product* index)
+void MyDataStore::addToCart(std::string username, Product* index, int itemID)
 {
     string usernameLower = convToLower(username);
     set<string>::iterator validUser  = userSet_.find(usernameLower);
 
     if(validUser == userSet_.end())
     {
-        cout << "User not found!" << endl;
+        cout << "Invalid request" << endl;
+        return;
+    }
+
+    else if(itemID == 0)
+    {
+        cout << "Invalid request" << endl;
         return;
     }
     
@@ -154,7 +164,7 @@ void MyDataStore::displayCart(std::string username)
 
     if(validUser == userSet_.end())
     {
-        cout << "User not found!" << endl;
+        cout << "Invalid username" << endl;
         return;
     }
 
@@ -175,7 +185,7 @@ void MyDataStore::buyUserCart(std::string username)
 
     if(validUser == userSet_.end())
     {
-        cout << "User not found!" << endl;
+        cout << "Invalid username" << endl;
         return;
     }
 

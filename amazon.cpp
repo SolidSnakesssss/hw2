@@ -101,15 +101,22 @@ int main(int argc, char* argv[])
 	    /* Add support for other commands here */
             else if ( cmd == "ADD")
             {
-                string username;
-                int itemID;
-                Product* index;
+                string username = "";
+                int itemID = 0;
+                Product* index = NULL;
 
-                ss >> username >> itemID;
+                if (hits.size() > 0)
+                {
+                  ss >> username >> itemID;
+                  index = hits[itemID - 1];
+                }
 
-                index = hits[itemID - 1];
+                if(itemID > hits.size() || itemID < 1)
+                {
+                  itemID = 0;
+                }
 
-                ds.addToCart(username, index);
+                ds.addToCart(username, index, itemID);
             }
             
             else if (cmd == "VIEWCART")
