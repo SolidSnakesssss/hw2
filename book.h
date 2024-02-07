@@ -4,6 +4,7 @@
 #include "product.h"
 #include "util.h"
 #include <sstream>
+#include <iomanip>
 
 class Book : public Product
 {

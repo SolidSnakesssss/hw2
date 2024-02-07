@@ -9,6 +9,7 @@
 #include "product.h"
 #include <map>
 #include <set>
+#include <iomanip>
 #include <iostream> //Debugging Purposes
 
 class MyDataStore : public DataStore

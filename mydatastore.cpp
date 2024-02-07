@@ -28,6 +28,7 @@ void MyDataStore::addProduct(Product* p)
 
 void MyDataStore::addUser(User* u)
 {
+    users_.insert(u);
     userSet_.insert(convToLower(u->getName()));
     userMap[convToLower(u->getName())] = u;
 }
@@ -251,12 +252,13 @@ void MyDataStore::buyUserCart(std::string username)
         else continue;
     }
 
-    //cout << tempUser->getName() << " After: " << tempUser->getBalance() << endl;
+    //double number = tempUser->getBalance();
+    //cout << tempUser->getName() << " After: " << setprecision(2) << fixed << number << endl;
 }
 
 void MyDataStore::dump(std::ostream& ofile)
 {
-    ofile << "<products>\n";
+    ofile << "<products>" << endl;
 
     for(set<Product*>::iterator it = products_.begin(); it != products_.end(); ++it)
     {
@@ -264,11 +266,15 @@ void MyDataStore::dump(std::ostream& ofile)
         temp->dump(ofile);
     }
 
-    ofile << "<users>\n";
+    ofile << "</products>" << endl;
+
+    ofile << "<users>" << endl;
 
     for(set<User*>::iterator it = users_.begin(); it != users_.end(); ++it)
     {
         User* temp = *it;
         temp->dump(ofile);
     }
+
+    ofile << "</users>" << endl;
 }
