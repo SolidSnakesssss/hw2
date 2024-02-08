@@ -212,7 +212,9 @@ void MyDataStore::displayCart(std::string username)
     for(vector<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end(); ++it)
     {
         Product* temp = *it;
-        cout <<  "Item #" << ++count << ": " << temp->getName() << endl;
+        cout <<  "Item: " << ++count << endl;
+        string info = temp->displayString();
+        cout << info << endl;
     }
 }
 
