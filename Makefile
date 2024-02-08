@@ -31,7 +31,5 @@ movie.o: movie.cpp movie.h product.h util.h
 mydatastore.o: mydatastore.cpp mydatastore.h datastore.h util.h book.h clothing.h movie.h product.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c mydatastore.cpp
 
-
-
 clean:
 	rm -f *.o amazon
