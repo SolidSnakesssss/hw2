@@ -23,7 +23,6 @@ void MyDataStore::addProduct(Product* p)
 {
     addProductToMap(p);
     products_.insert(p);
-    //products_.push_back(p);
 }
 
 void MyDataStore::addUser(User* u)
@@ -41,7 +40,7 @@ void MyDataStore::addProductToMap(Product* p)
     //Maps the products to the appropriate keys(key terms)
     for(set<string>::iterator it = keyWords.begin(); it != keyWords.end(); ++it)
     {
-        productMap[*it].insert(p);
+      productMap[*it].insert(p);
     }
 }
 
@@ -74,7 +73,6 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
-    //bool firstPass = true;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
@@ -92,7 +90,6 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
             //Adds products to the tempProductSet
             for (Product* product : productSet)
             {
-                //cout << product->getName() << endl;
                 tempProductsSet.insert(product);
             }
 
@@ -101,16 +98,7 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
             if (totalProducts.empty())
             {
                 totalProducts = tempProductsSet;
-                //firstPass = false;
             }
-            
-            /*
-            else if(tempProductsSet.empty())
-            {
-                totalProducts.clear();
-                //firstPass = true;
-            }
-            */
 
             else
             {
@@ -139,8 +127,6 @@ std::vector<Product*> MyDataStore::unionReturn(std::vector<std::string>& terms)
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
-
-    //cout << "Taco" << endl;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
@@ -253,9 +239,6 @@ void MyDataStore::buyUserCart(std::string username)
 
         else ++it;
     }
-
-    //double number = tempUser->getBalance();
-    //cout << tempUser->getName() << " After: " << setprecision(2) << fixed << number << endl;
 }
 
 void MyDataStore::dump(std::ostream& ofile)

@@ -63,8 +63,7 @@ std::string Book::displayString() const
     bookInfo += name_ + "\n";
     bookInfo += "Author: " + author_ + " ISBN: " + ISBN_ + "\n";
     bookInfo += stringPrice + " " + stringQuantity + " left.";
-
-    //cout << bookInfo << endl;
+    
     return bookInfo;
 }
 
