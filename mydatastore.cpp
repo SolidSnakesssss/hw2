@@ -209,7 +209,7 @@ void MyDataStore::displayCart(std::string username)
         return;
     }
 
-    for(vector<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end(); ++it)
+    for(deque<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end(); ++it)
     {
         Product* temp = *it;
         cout <<  "Item: " << ++count << endl;
@@ -220,6 +220,7 @@ void MyDataStore::displayCart(std::string username)
 
 
 //Buys Items from the user's cart (Do not need to implement item removal)
+//Needs to modify so item can be removed from the front
 void MyDataStore::buyUserCart(std::string username)
 {
     string usernameLower = convToLower(username);
@@ -234,9 +235,7 @@ void MyDataStore::buyUserCart(std::string username)
 
     User* tempUser = userMap[usernameLower];
 
-    //cout << tempUser->getName() << " Before: " << tempUser->getBalance() << endl;
-
-    for(vector<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end(); ++it)
+    for(deque<Product*>::iterator it = cart[usernameLower].begin(); it != cart[usernameLower].end();)
     {
         Product* tempProduct = *it;
 
@@ -246,12 +245,13 @@ void MyDataStore::buyUserCart(std::string username)
             {
                 tempUser->deductAmount(tempProduct->getPrice());
                 tempProduct->subtractQty(1);
+                it = cart[usernameLower].erase(it);
             }
 
-            else continue;
+            else ++it;
         }
 
-        else continue;
+        else ++it;
     }
 
     //double number = tempUser->getBalance();

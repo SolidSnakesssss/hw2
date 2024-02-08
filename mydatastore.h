@@ -10,7 +10,7 @@
 #include <map>
 #include <set>
 #include <iomanip>
-#include <iostream> //Debugging Purposes
+#include <deque>
 
 class MyDataStore : public DataStore
 {
@@ -42,7 +42,7 @@ private:
     std::set<User*> users_;
     std::set<std::string> userSet_;
     std::map<std::string, std::set<Product*>> productMap;
-    std::map<std::string, std::vector<Product*>> cart;
+    std::map<std::string, std::deque<Product*>> cart;
     std::map<std::string, User*> userMap;
 };
 
