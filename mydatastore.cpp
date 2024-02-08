@@ -53,19 +53,11 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 {
     vector<Product*> results;
 
-    if (type == 0)
-    {
-        results = intersectionReturn(terms);
-        return results;
-    }
+    if (type == 0) results = intersectionReturn(terms);
 
-    else if(type == 1)
-    {
-        results = unionReturn(terms);
-        return results;
-    }
+    else if(type == 1) results = unionReturn(terms);
 
-    else return results;
+    return results;
 }
 
 //Finds the intersection of the search results
@@ -73,6 +65,8 @@ std::vector<Product*> MyDataStore::intersectionReturn(std::vector<std::string>& 
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
+
+    if(terms.empty()) return productReturn;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
@@ -127,6 +121,8 @@ std::vector<Product*> MyDataStore::unionReturn(std::vector<std::string>& terms)
 {
     vector<Product*> productReturn;
     set<Product*> totalProducts;
+
+    if(terms.empty()) return productReturn;
 
     //Checks if the map has any keys with the same term
     for(vector<string>::iterator it = terms.begin(); it != terms.end(); ++it)
